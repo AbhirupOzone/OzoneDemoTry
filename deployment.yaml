@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: example
+spec:
+  selector:
+    matchLabels:
+      app: example
+  replicas: 3  # no of container taht will be created
+  template:
+    metadata:
+      labels:
+        app: example
+    spec:
+      containers:
+      - name: example
+        image: abhirup
+        imagePullPolicy: Never
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 4200
+          # nodeport: 3700
